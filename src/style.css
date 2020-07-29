@@ -4,6 +4,9 @@
   flex-direction: row;
   justify-content: center;
 
+  max-width: 1000px;
+  margin: 0 auto;
+
   font-family: "Inter", "Helvetica", sans-serif;
 }
 
@@ -58,14 +61,15 @@
   -moz-appearance: none;
   -webkit-appearance: none;
 
-  display: inline-block;
-  padding: 3px 4px;
+  display: inline;
+  padding: 1.5px 4px;
 
   border: 0;
   border-radius: 3px;
   color: white;
   font-family: "Inter", "Helvetica", sans-serif;
   font-size: 100%;
+  line-height: 1.5;
   text-align: left;
 }
 #madlibs .clause-entry:focus {

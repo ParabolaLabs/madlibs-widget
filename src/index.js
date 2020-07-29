@@ -47,7 +47,7 @@
     this.id = el.id;
     this.$wrapper = el;
     this.$select = this.$wrapper.querySelector('select');
-    this.$button = this.$wrapper.querySelector('button');
+    this.$button = this.$wrapper.querySelector('a');
     this.$contents = this.$wrapper.querySelector('menu');
 
     this.init();
