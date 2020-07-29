@@ -2,38 +2,55 @@
   const PROCESS_CLAUSES = {
     shopify: {
       prefix: "Show me all the orders that ",
-      options: ["have", "have not"],
+      options: { have: "have", haveNot: "have not" },
       suffix: " been fulfilled",
     },
     returns: {
       prefix: "Show me all the returns that ",
-      options: ["have", "have not"],
+      options: { have: "have", haveNot: "have not" },
       suffix: " been processed",
     },
     adSpend: {
       prefix: "Show me all the ad campaigns where CPC is",
-      options: ["above average", "below average"],
-    },
-  }
-
-  const callbacks = {
-    onImportChange: function(e) {
-      document.getElementById('madlibs-clause-process');
+      options: { above: "above average", below: "below average" },
     },
   }
 
   const dropdowns = [];
 
-  function Dropdown(el) {
-    this.$wrapper = el;
-    this.$select = el.querySelector('select');
-    this.$button = el.querySelector('button');
-    this.$contents = el.querySelector('ul');
+  const callbacks = {
+    onImportChange: function(value) {
+      const newClause = PROCESS_CLAUSES[value];
 
-    console.log(this);
+      const $clause = document.getElementById('madlibs-clause-process');
+      const dropdownIndex = dropdowns.findIndex((dropdown) => dropdown.id === 'process-dropdown');
+      const $prefix = $clause.querySelector('.prefix');
+      const $select = $clause.querySelector('select');
+      const $suffix = $clause.querySelector('.suffix');
+
+      $prefix.textContent = newClause.prefix;
+      $suffix.textContent = newClause.suffix;
+      $select.innerHTML = '';
+
+      for (const [key, value] of Object.entries(newClause.options)) {
+        const $newOption = document.createElement('option');
+        $newOption.value = key;
+        $newOption.textContent = value;
+        $select.appendChild($newOption);
+      }
+
+      dropdowns[dropdownIndex] = new Dropdown(dropdowns[dropdownIndex].$wrapper);
+    },
+  }
+
+  function Dropdown(el) {
+    this.id = el.id;
+    this.$wrapper = el;
+    this.$select = this.$wrapper.querySelector('select');
+    this.$button = this.$wrapper.querySelector('button');
+    this.$contents = this.$wrapper.querySelector('menu');
 
     this.init();
-    this.bindEvents();
   }
 
   Dropdown.prototype = {
@@ -44,22 +61,23 @@
       this.$select.hidden = true;
       this.$contents.innerHTML = '';
 
-      const options = this.$select.querySelectorAll('option');
-      options.forEach((option) => {
-        const menuItem = option.cloneNode(true);
-        menuItem.nodeName = 'menuitem';
-        menuItem.addEventListener('click', this.selectOption.bind(this));
-        this.$contents.appendChild(menuItem);
+      const $options = this.$select.querySelectorAll('option');
+      $options.forEach(($option) => {
+        const $menuItem = document.createElement('menuitem');
+        $menuItem.setAttribute('class', 'clause-dropdown-item');
+        $menuItem.textContent = $option.textContent;
+        $menuItem.value = $option.value;
+        this.$contents.appendChild($menuItem);
       });
+
+      this.bindEvents();
     },
 
     bindEvents: function() {
       this.$button.addEventListener('click', this.toggle.bind(this));
-
-      const onChange = this.$select.dataset.onChange;
-      if (onChange) {
-        this.$select.addEventListener('change', callbacks[onChange]);
-      }
+      this.$contents.querySelectorAll('menuitem').forEach(menuItem => {
+        menuItem.addEventListener('click', this.selectOption.bind(this));
+      });
     },
 
     toggle: function(e) {
@@ -75,11 +93,16 @@
     },
 
     positionContents: function() {
-      const left = this.$button.offsetLeft;
       const top = this.$button.offsetHeight;
-
-      this.$contents.style.left = left + 'px';
       this.$contents.style.top = top + 'px';
+
+      if (this.$contents.dataset.align === 'right') {
+        const right = 15;
+        this.$contents.style.right = right + 'px';
+      } else {
+        const left = this.$button.offsetLeft;
+        this.$contents.style.left = left + 'px';
+      }
     },
 
     close: function() {
@@ -87,9 +110,13 @@
     },
 
     selectOption: function(e) {
-      e.preventDefault();
-      this.$select.value = e.target.value;
-      this.$button.textContent = this.getOptionTextByValue(e.target.value);
+      const value = e.target.value
+      this.$select.value = value;
+      this.$button.textContent = this.getOptionTextByValue(value);
+
+      const onChange = this.$select.dataset.onchange;
+      onChange && callbacks[onChange].call(this, value);
+
       this.close();
     },
 

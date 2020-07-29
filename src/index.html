@@ -4,39 +4,39 @@
     <link rel="stylesheet" href="./style.css" />
     <div id="madlibs">
       <div data-component="clause" id="madlibs-clause-import" class="clause">
-        Import
-        <span data-component="select">
+        <span class="prefix">Import</span>
+        <span id="import-dropdown" data-component="select">
           <select data-onchange="onImportChange" class="clause-entry green">
             <option value="shopify">yesterday&rsquo;s Shopify orders</option>
             <option value="returns">last week&rsquo;s returns</option>
             <option value="adSpend">June&rsquo;s ad spend</option>
           </select>
           <button hidden class="clause-entry green"></button>
-          <ul class="clause-dropdown" hidden data-component="dropdown"></ul>
+          <menu class="clause-dropdown" hidden data-component="dropdown"></menu>
         </span>
       </div>
       <div data-component="clause" id="madlibs-clause-process" class="clause">
-        Show me all the orders that
-        <span data-component="select">
+        <span class="prefix">Show me all the orders that</span>
+        <span id="process-dropdown" data-component="select">
           <select class="clause-entry orange">
             <option value="have">have</option>
             <option value="haveNot">have not</option>
           </select>
           <button hidden class="clause-entry orange"></button>
-          <ul class="clause-dropdown" hidden data-component="dropdown"></ul>
+          <menu class="clause-dropdown" hidden data-component="dropdown"></menu>
         </span>
-        been fulfilled
+        <span class="suffix">been fulfilled</span>
       </div>
       <div data-component="clause" id="madlibs-clause-export" class="clause">
-        Send data
-        <span data-component="select">
+        <span class="prefix">Send data</span>
+        <span id="export-dropdown" data-component="select">
           <select class="clause-entry teal">
             <option value="shopify">to Shopify</option>
             <option value="googleSheets">to Google Sheets</option>
             <option value="email">as an email to me and my business partner</option>
           </select>
           <button hidden class="clause-entry teal"></button>
-          <ul class="clause-dropdown" hidden data-component="dropdown"></ul>
+          <menu class="clause-dropdown" hidden data-component="dropdown" data-align="right"></menu>
         </span>
       </div>
     </div>

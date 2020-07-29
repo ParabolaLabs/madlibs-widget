@@ -1,5 +1,6 @@
 #madlibs {
   display: flex;
+  align-items: center;
   flex-direction: row;
   justify-content: center;
 
@@ -7,7 +8,9 @@
 }
 
 #madlibs [hidden] {
-  display: none !important;
+  position: absolute;
+  pointer-events: none;
+  visibility: hidden;
 }
 
 #madlibs .clause {
@@ -56,14 +59,14 @@
   -webkit-appearance: none;
 
   display: inline-block;
+  padding: 3px 4px;
 
   border: 0;
   border-radius: 3px;
   color: white;
   font-family: "Inter", "Helvetica", sans-serif;
   font-size: 100%;
-
-  padding: 3px 4px;
+  text-align: left;
 }
 #madlibs .clause-entry:focus {
   outline: 0;
@@ -80,9 +83,34 @@
 
 #madlibs .clause-dropdown {
   position: absolute;
-
+  z-index: 2;
   border: 1px solid #93A7B3;
   border-radius: 3px;
-  background-color: white;
+  background-color: #fff;
+  padding: 0;
+  min-width: 220px;
+  max-width: 280px;
+  transition: visibility 0s, opacity 0.2s linear;
+  opacity: 1;
+}
+#maxlibs .clause-dropdown[hidden] {
+  -webkit-transform: translateY(12px);
+  -moz-transform: translateY(12px);
+  transform: translateY(12px);
+}
+#madlibs .clause-dropdown option:hover {
+  background-color: #eee;
+}
+
+#madlibs .clause-dropdown-item {
+  display: block;
+  cursor: pointer;
   padding: 5px;
+}
+#madlibs .clause-dropdown-item:hover,
+#madlibs .clause-dropdown-item:focus {
+  background-color: #e0e0e0;
+}
+#madlibs .clause-dropdown-item + .clause-dropdown-item {
+  margin-top: 5px;
 }
