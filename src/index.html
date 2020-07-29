@@ -7,23 +7,23 @@
         Import
         <span data-component="select">
           <select data-onchange="onImportChange" class="clause-entry green">
-            <option>yesterday&rsquo;s Shopify orders</option>
-            <option>last week&rsquo;s returns</option>
-            <option>June&rsquo;s ad spend</option>
+            <option value="shopify">yesterday&rsquo;s Shopify orders</option>
+            <option value="returns">last week&rsquo;s returns</option>
+            <option value="adSpend">June&rsquo;s ad spend</option>
           </select>
           <button hidden class="clause-entry green"></button>
-          <ul hidden data-component="dropdown"></ul>
+          <ul class="clause-dropdown" hidden data-component="dropdown"></ul>
         </span>
       </div>
       <div data-component="clause" id="madlibs-clause-process" class="clause">
         Show me all the orders that
         <span data-component="select">
           <select class="clause-entry orange">
-            <option>have</option>
-            <option>have not</option>
+            <option value="have">have</option>
+            <option value="haveNot">have not</option>
           </select>
           <button hidden class="clause-entry orange"></button>
-          <ul hidden data-component="dropdown"></ul>
+          <ul class="clause-dropdown" hidden data-component="dropdown"></ul>
         </span>
         been fulfilled
       </div>
@@ -31,12 +31,12 @@
         Send data
         <span data-component="select">
           <select class="clause-entry teal">
-            <option>to Shopify</option>
-            <option>to Google Sheets</option>
-            <option>as an email to me and my business partner</option>
+            <option value="shopify">to Shopify</option>
+            <option value="googleSheets">to Google Sheets</option>
+            <option value="email">as an email to me and my business partner</option>
           </select>
           <button hidden class="clause-entry teal"></button>
-          <ul hidden data-component="dropdown"></ul>
+          <ul class="clause-dropdown" hidden data-component="dropdown"></ul>
         </span>
       </div>
     </div>
