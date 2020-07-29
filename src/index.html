@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <body>
+    <link rel="stylesheet" href="./style.css" />
+    <div id="madlibs">
+      <div data-component="clause" id="madlibs-clause-import" class="clause">
+        Import
+        <span data-component="select">
+          <select data-onchange="onImportChange" class="clause-entry green">
+            <option>yesterday&rsquo;s Shopify orders</option>
+            <option>last week&rsquo;s returns</option>
+            <option>June&rsquo;s ad spend</option>
+          </select>
+          <button hidden class="clause-entry green"></button>
+          <ul hidden data-component="dropdown"></ul>
+        </span>
+      </div>
+      <div data-component="clause" id="madlibs-clause-process" class="clause">
+        Show me all the orders that
+        <span data-component="select">
+          <select class="clause-entry orange">
+            <option>have</option>
+            <option>have not</option>
+          </select>
+          <button hidden class="clause-entry orange"></button>
+          <ul hidden data-component="dropdown"></ul>
+        </span>
+        been fulfilled
+      </div>
+      <div data-component="clause" id="madlibs-clause-export" class="clause">
+        Send data
+        <span data-component="select">
+          <select class="clause-entry teal">
+            <option>to Shopify</option>
+            <option>to Google Sheets</option>
+            <option>as an email to me and my business partner</option>
+          </select>
+          <button hidden class="clause-entry teal"></button>
+          <ul hidden data-component="dropdown"></ul>
+        </span>
+      </div>
+    </div>
+    <script type="text/javascript" src="./index.js"></script>
+  </body>
+</html>
