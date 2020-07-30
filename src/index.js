@@ -80,6 +80,8 @@
 
     bindEvents: function() {
       this.$button.addEventListener('click', this.toggle.bind(this));
+      // prevent double-click selection
+      this.$button.addEventListener('mousedown', (e) => e.preventDefault());
       this.$contents.querySelectorAll('menuitem').forEach(menuItem => {
         menuItem.addEventListener('click', this.selectOption.bind(this));
       });
