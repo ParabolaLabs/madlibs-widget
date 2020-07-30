@@ -3,40 +3,37 @@
   <body>
     <link rel="stylesheet" href="./style.css" />
     <div id="madlibs">
-      <div data-component="clause" id="madlibs-clause-import" class="clause">
+      <div data-component="clause" id="madlibs-clause-import" class="clause green">
         <span class="prefix">Import</span>
-        <span id="import-dropdown" data-component="select">
-          <select data-onchange="onImportChange" class="clause-entry green">
+        <span id="import-dropdown" data-component="select" data-onchange="onImportChange">
+          <select class="clause-entry">
             <option value="shopify">yesterday&rsquo;s Shopify orders</option>
             <option value="returns">last week&rsquo;s returns</option>
             <option value="adSpend">June&rsquo;s ad spend</option>
           </select>
-          <a hidden class="clause-entry green"></a>
-          <menu class="clause-dropdown" hidden data-component="dropdown"></menu>
+          <a hidden class="clause-entry"></a>
         </span>
       </div>
-      <div data-component="clause" id="madlibs-clause-process" class="clause">
+      <div data-component="clause" id="madlibs-clause-process" class="clause orange">
         <span class="prefix">Show me all the orders that</span>
         <span id="process-dropdown" data-component="select">
-          <select class="clause-entry orange">
+          <select class="clause-entry">
             <option value="have">have</option>
             <option value="haveNot">have not</option>
           </select>
-          <a hidden class="clause-entry orange"></a>
-          <menu class="clause-dropdown" hidden data-component="dropdown"></menu>
+          <a hidden class="clause-entry"></a>
         </span>
         <span class="suffix">been fulfilled</span>
       </div>
-      <div data-component="clause" id="madlibs-clause-export" class="clause">
+      <div data-component="clause" id="madlibs-clause-export" class="clause teal">
         <span class="prefix">Send data</span>
-        <span id="export-dropdown" data-component="select">
+        <span id="export-dropdown" data-component="select" data-align="right">
           <select class="clause-entry teal">
             <option value="shopify">to Shopify</option>
             <option value="googleSheets">to Google Sheets</option>
             <option value="email">as an email to me and my business partner</option>
           </select>
-          <a hidden class="clause-entry teal"></a>
-          <menu class="clause-dropdown" hidden data-component="dropdown" data-align="right"></menu>
+          <a hidden class="clause-entry"></a>
         </span>
       </div>
     </div>

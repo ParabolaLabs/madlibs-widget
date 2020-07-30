@@ -48,7 +48,12 @@
     this.$wrapper = el;
     this.$select = this.$wrapper.querySelector('select');
     this.$button = this.$wrapper.querySelector('a');
-    this.$contents = this.$wrapper.querySelector('menu');
+    this.$contents = document.createElement('menu');
+    this.$contents.setAttribute('class', 'clause-dropdown');
+
+    this.settings = {
+      align: this.$wrapper.dataset.align
+    };
 
     this.init();
   }
@@ -84,8 +89,12 @@
       e.preventDefault();
       dropdowns.forEach((dropdown) => {
         if (dropdown === this) {
-          this.positionContents();
-          this.$contents.hidden = !this.$contents.hidden;
+          if (this.$wrapper.querySelector('menu')) {
+            dropdown.close();
+          } else {
+            this.positionContents();
+            this.$button.after(this.$contents);
+          }
         } else {
           dropdown.close();
         }
@@ -96,7 +105,7 @@
       const top = this.$button.offsetHeight;
       this.$contents.style.top = top + 'px';
 
-      if (this.$contents.dataset.align === 'right') {
+      if (this.settings.align === 'right') {
         const right = 15;
         this.$contents.style.right = right + 'px';
       } else {
@@ -106,7 +115,7 @@
     },
 
     close: function() {
-      this.$contents.hidden = true;
+      this.$contents.remove();
     },
 
     selectOption: function(e) {
