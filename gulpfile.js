@@ -1,9 +1,21 @@
 const gulp = require('gulp');
 const fileInline = require('gulp-file-inline');
 const liveServer = require('live-server');
+const sass = require('gulp-sass');
 
-function build() {
-  return gulp
+sass.compiler = require('node-sass');
+
+function css(cb) {
+  console.log('css?');
+  gulp
+    .src('src/style.scss')
+    .pipe(sass.sync().on('error', sass.logError))
+    .pipe(gulp.dest('dist/'));
+  cb();
+}
+
+function inline(cb) {
+  gulp
     .src('src/index.html')
     .pipe(fileInline({
       css: {
@@ -14,14 +26,15 @@ function build() {
       },
     }))
     .pipe(gulp.dest('dist/'));
+  cb();
 };
 
 function watch() {
   liveServer.start({
     root: 'dist/',
   })
-  gulp.watch('src/*', build);
+  gulp.watch('src/*', gulp.series(css, inline));
 }
 
 exports.watch = watch;
-exports.build = build
+exports.build = gulp.series(css, inline);

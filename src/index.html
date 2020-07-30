@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html>
   <body>
-    <link rel="stylesheet" href="./style.css" />
+    <link rel="stylesheet" href="../dist/style.css" />
     <div id="madlibs">
       <div data-component="clause" id="madlibs-clause-import" class="clause green">
         <span class="prefix">Import</span>
-        <span id="import-dropdown" data-component="select" data-onchange="onImportChange">
+        <span class="clause-dropdown" id="import-dropdown" data-component="select" data-onchange="onImportChange">
           <select class="clause-entry">
             <option value="shopify">yesterday&rsquo;s Shopify orders</option>
             <option value="returns">last week&rsquo;s returns</option>
@@ -16,7 +16,7 @@
       </div>
       <div data-component="clause" id="madlibs-clause-process" class="clause orange">
         <span class="prefix">Show me all the orders that</span>
-        <span id="process-dropdown" data-component="select">
+        <span class="clause-dropdown" id="process-dropdown" data-component="select">
           <select class="clause-entry">
             <option value="have">have</option>
             <option value="haveNot">have not</option>
@@ -27,7 +27,7 @@
       </div>
       <div data-component="clause" id="madlibs-clause-export" class="clause teal">
         <span class="prefix">Send data</span>
-        <span id="export-dropdown" data-component="select" data-align="right">
+        <span class="clause-dropdown" id="export-dropdown" data-component="select" data-align="right">
           <select class="clause-entry teal">
             <option value="shopify">to Shopify</option>
             <option value="googleSheets">to Google Sheets</option>
