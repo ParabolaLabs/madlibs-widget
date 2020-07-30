@@ -19,19 +19,21 @@
   margin: 0 auto;
 
   font-family: "Inter", "Helvetica", sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.714;
 
   [hidden] { display: none !important; }
 
   .clause {
-    border: 1px solid #000;
-    border-radius: 5px;
-    box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.25);
+    color: white;
+    background-color: #20303A;
+    border-radius: 10px;
 
-    flex-grow: 6;
-    flex-shrink: 5;
-
-    padding: 10px 15px;
+    padding: 15px 15px;
     position: relative;
+    text-align: center;
+    line-height: 1.85;
 
     &:not(:first-child) {
       margin-left: 45px;
@@ -69,34 +71,46 @@
       -webkit-transform: rotate(-45deg);
       -moz-transform: rotate(-45deg);
     }
+  }
 
-    &.green {
+  .clause-dropdown {
+    &.one {
       .clause-entry {
-        background-color: #36BA82;
-        box-shadow: 6px 0 0 #36BA82, -6px 0 0 #36BA82;
+        background-color: #1D93BA;
+        box-shadow: 6px 0 0 #1D93BA, -6px 0 0 #1D93BA;
       }
       .clause-menu {
-        background-color: #36BA82;
+        background-color: #1D93BA;
       }
     }
 
-    &.orange {
-      .clause-entry {
-        background-color: #FF9E58;
-        box-shadow: 6px 0 0 #FF9E58, -6px 0 0 #FF9E58;
-      }
-      .clause-menu {
-        background-color: #FF9E58;
-      }
-    }
-
-    &.teal {
+    &.two {
       .clause-entry {
         background-color: #46B4BF;
         box-shadow: 6px 0 0 #46B4BF, -6px 0 0 #46B4BF;
       }
       .clause-menu {
         background-color: #46B4BF;
+      }
+    }
+
+    &.three {
+      .clause-entry {
+        background-color: #42B2FD;
+        box-shadow: 6px 0 0 #42B2FD, -6px 0 0 #42B2FD;
+      }
+      .clause-menu {
+        background-color: #42B2FD;
+      }
+    }
+
+    &.four {
+      .clause-entry {
+        background-color: #0082DA;
+        box-shadow: 6px 0 0 #0082DA, -6px 0 0 #0082DA;
+      }
+      .clause-menu {
+        background-color: #0082DA;
       }
     }
   }
@@ -112,7 +126,7 @@
     margin: 0 6px;
 
     border: 0;
-    border-radius: 3px;
+    border-radius: 2px;
     color: white;
     font-family: "Inter", "Helvetica", sans-serif;
     font-size: 100%;
@@ -128,10 +142,12 @@
     position: absolute;
     z-index: 2;
     color: #fff;
-    border-radius: 3px;
-    box-shadow: 10px 10px 30px rgba(0, 0, 0, 0.35);
-    padding: 4px 0;
-    margin-top: 6px;
+    line-height: 1.14;
+    text-align: left;
+    border-radius: 2px;
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.35);
+    padding: 6px 0;
+    margin-top: 4px;
     margin-left: -6px;
     min-width: 200px;
     max-width: 280px;
@@ -141,11 +157,11 @@
   .clause-menu-item {
     display: block;
     cursor: pointer;
-    padding: 4px 6px;
+    padding: 8px 6px;
     transition: background-color 0.1s ease;
 
     & + & {
-      margin-top: 4px;
+      margin-top: 6px;
     }
 
     &:hover, &:focus {
