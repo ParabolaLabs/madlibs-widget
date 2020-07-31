@@ -81,6 +81,8 @@
       });
 
       this.toggle = this.toggle.bind(this);
+      this.selectOption = this.selectOption.bind(this)
+      this.onClickOutside = this.onClickOutside.bind(this);
     },
 
     bindEvents: function() {
@@ -92,7 +94,7 @@
 
     bindMenuItems: function() {
       this.$contents.querySelectorAll('menuitem').forEach(menuItem => {
-        menuItem.addEventListener('click', this.selectOption.bind(this));
+        menuItem.addEventListener('click', this.selectOption);
       });
     },
 
@@ -108,10 +110,31 @@
       if (this.menuOpen) {
         this.close();
       } else {
-        this.menuOpen = true;
-        this.positionContents();
-        this.$button.after(this.$contents);
+        this.open();
       }
+    },
+
+    open: function() {
+      this.menuOpen = true;
+      this.positionContents();
+      this.$button.after(this.$contents);
+      document.addEventListener('click', this.onClickOutside);
+    },
+
+    close: function() {
+      this.menuOpen = false;
+      document.removeEventListener('click', this.onClickOutside);
+      const removeContents = () => {
+        this.$contents.classList.remove('closing');
+        this.$contents.removeEventListener('animationend', removeContents);
+        this.$contents.remove();
+      };
+      this.$contents.addEventListener('animationend', removeContents)
+      this.$contents.classList.add('closing');
+    },
+
+    onClickOutside: function(e) {
+      if (!this.$wrapper.contains(e.target)) this.close();
     },
 
     positionContents: function() {
@@ -128,17 +151,6 @@
         const left = this.getWordsByPosition()[0].offsetLeft;
         this.$contents.style.left = left + 'px';
       }
-    },
-
-    close: function() {
-      this.menuOpen = false;
-      const removeContents = () => {
-        this.$contents.classList.remove('closing');
-        this.$contents.removeEventListener('animationend', removeContents);
-        this.$contents.remove();
-      };
-      this.$contents.addEventListener('animationend', removeContents)
-      this.$contents.classList.add('closing');
     },
 
     setButtonText: function(text) {
