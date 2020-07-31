@@ -121,8 +121,9 @@
       if (this.settings.align === 'right') {
         const $words = this.getWordsByPosition()
         const $rightmostWord = $words[$words.length - 1];
-        const left = $rightmostWord.offsetLeft = $rightmostWord.offsetWidth;
-        this.$contents.style.left = left + 'px';
+        const leftOffset = $rightmostWord.offsetLeft + $rightmostWord.offsetWidth + 6;
+        const parentWidth = $rightmostWord.offsetParent.offsetWidth;
+        this.$contents.style.right = parentWidth - leftOffset + 'px';
       } else {
         const left = this.getWordsByPosition()[0].offsetLeft;
         this.$contents.style.left = left + 'px';
