@@ -3,12 +3,12 @@
     shopify: {
       prefix: "Show me all the orders that ",
       options: { have: "have", haveNot: "have not" },
-      suffix: " been fulfilled",
+      suffix: " been&nbsp;fulfilled",
     },
     returns: {
       prefix: "Show me all the returns that ",
       options: { have: "have", haveNot: "have not" },
-      suffix: " been processed",
+      suffix: " been&nbsp;processed",
     },
     adSpend: {
       prefix: "Show me all the ad campaigns where CPC is",
@@ -28,8 +28,8 @@
       const $select = $clause.querySelector('select');
       const $suffix = $clause.querySelector('.suffix');
 
-      $prefix.textContent = newClause.prefix;
-      $suffix.textContent = newClause.suffix;
+      $prefix.innerHTML = newClause.prefix || '';
+      $suffix.innerHTML = newClause.suffix || '';
       $select.innerHTML = '';
 
       for (const [key, value] of Object.entries(newClause.options)) {
@@ -158,7 +158,10 @@
       const words = text.split(' ');
       words.map((word, i) => {
         const $word = document.createElement('span');
-        $word.textContent = i < (words.length - 1) ? word + ' ' : word;
+        let text = word;
+        if (i === words.length - 2) { text += '&nbsp;'; }
+        else if (i !== words.length - 1) { text += ' '; }
+        $word.innerHTML = text;
         this.$button.appendChild($word);
       });
     },
