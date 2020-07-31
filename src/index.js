@@ -1,17 +1,17 @@
 (function(window, document) {
   const PROCESS_CLAUSES = {
     shopify: {
-      prefix: "Show me all the orders that ",
+      prefix: "Show me all the orders that<br>",
       options: { have: "have", haveNot: "have not" },
       suffix: " been&nbsp;fulfilled",
     },
     returns: {
-      prefix: "Show me all the returns that ",
+      prefix: "Show me all the returns that<br>",
       options: { have: "have", haveNot: "have not" },
       suffix: " been&nbsp;processed",
     },
     adSpend: {
-      prefix: "Show me all the ad campaigns where CPC is",
+      prefix: "Show me all the ad campaigns where<br>CPC is",
       options: { above: "above average", below: "below average" },
     },
   }
