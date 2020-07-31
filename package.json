@@ -13,6 +13,7 @@
   "devDependencies": {
     "gulp": "^4.0.2",
     "gulp-file-inline": "^2.2.3",
+    "gulp-minify": "^3.1.0",
     "gulp-sass": "^4.1.0",
     "live-server": "^1.2.1",
     "node-sass": "^4.14.1"
