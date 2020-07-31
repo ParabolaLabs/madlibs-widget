@@ -34,6 +34,8 @@
   font-weight: 500;
   line-height: 1.714;
 
+  * { box-sizing: border-box; }
+
   [hidden] { display: none !important; }
 
   .clause {
@@ -70,13 +72,12 @@
       position: absolute;
       top: 50%;
       left: 100%;
-      margin-left: 35px;
-      margin-top: -8px;
+      margin-left: 33px;
+      margin-top: -6px;
       width: 0;
       height: 0;
-      border: 9px solid transparent;
-      border-left: 9px solid #20303A;
-      border-radius: 1px;
+      border: 6px solid transparent;
+      border-left: 13px solid #20303A;
     }
   }
 
@@ -215,6 +216,14 @@
         -webkit-transform: rotate(90deg);
         -moz-transform: rotate(90deg);
       }
+    }
+  }
+}
+
+@media (max-width: 500px) {
+  #madlibs {
+    .clause {
+      width: 90%;
     }
 
     .clause-menu {
