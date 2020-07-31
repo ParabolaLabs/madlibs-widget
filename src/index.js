@@ -39,7 +39,9 @@
         $select.appendChild($newOption);
       }
 
-      dropdowns[dropdownIndex] = new Dropdown(dropdowns[dropdownIndex].$wrapper);
+      const dropdown = dropdowns[dropdownIndex];
+      dropdown.init();
+      dropdown.bindMenuItems();
     },
   }
 
@@ -51,11 +53,15 @@
     this.$contents = document.createElement('menu');
     this.$contents.setAttribute('class', 'clause-menu');
 
+    this.menuOpen = false;
+
     this.settings = {
-      align: this.$wrapper.dataset.align
+      align: this.$wrapper.dataset.align,
+      onChange: this.$wrapper.dataset.onchange,
     };
 
     this.init();
+    this.bindEvents();
   }
 
   Dropdown.prototype = {
@@ -74,13 +80,17 @@
         this.$contents.appendChild($menuItem);
       });
 
-      this.bindEvents();
+      this.toggle = this.toggle.bind(this);
     },
 
     bindEvents: function() {
-      this.$button.addEventListener('click', this.toggle.bind(this));
+      this.$button.addEventListener('click', this.toggle);
       // prevent double-click selection
       this.$button.addEventListener('mousedown', (e) => e.preventDefault());
+      this.bindMenuItems();
+    },
+
+    bindMenuItems: function() {
       this.$contents.querySelectorAll('menuitem').forEach(menuItem => {
         menuItem.addEventListener('click', this.selectOption.bind(this));
       });
@@ -88,18 +98,20 @@
 
     toggle: function(e) {
       e.preventDefault();
+
       dropdowns.forEach((dropdown) => {
-        if (dropdown === this) {
-          if (this.$wrapper.querySelector('menu')) {
-            dropdown.close();
-          } else {
-            this.positionContents();
-            this.$button.after(this.$contents);
-          }
-        } else {
+        if (dropdown !== this && dropdown.menuOpen) {
           dropdown.close();
         }
       });
+
+      if (this.menuOpen) {
+        this.close();
+      } else {
+        this.menuOpen = true;
+        this.positionContents();
+        this.$button.after(this.$contents);
+      }
     },
 
     positionContents: function() {
@@ -118,7 +130,14 @@
     },
 
     close: function() {
-      this.$contents.remove();
+      this.menuOpen = false;
+      const removeContents = () => {
+        this.$contents.classList.remove('closing');
+        this.$contents.removeEventListener('animationend', removeContents);
+        this.$contents.remove();
+      };
+      this.$contents.addEventListener('animationend', removeContents)
+      this.$contents.classList.add('closing');
     },
 
     setButtonText: function(text) {
@@ -141,7 +160,7 @@
       this.$select.value = value;
       this.setButtonText(this.getOptionTextByValue(value));
 
-      const onChange = this.$select.dataset.onchange;
+      const onChange = this.settings.onChange;
       onChange && callbacks[onChange].call(this, value);
 
       this.close();
