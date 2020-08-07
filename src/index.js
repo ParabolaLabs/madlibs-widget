@@ -196,5 +196,6 @@
     selects.forEach(function(select) {
       dropdowns.push(new Dropdown(select));
     });
+    document.querySelector('#madlibs').classList.add('active');
   };
 })(window, document);
