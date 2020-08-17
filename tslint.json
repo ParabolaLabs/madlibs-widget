@@ -46,7 +46,6 @@
     "no-construct": true,
     "no-parameter-properties": false,
     "no-debugger": true,
-    "no-shadowed-variable": true,
     "no-duplicate-variable": true,
     "no-empty": true,
     "no-eval": true,

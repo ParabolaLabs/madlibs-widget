@@ -4,9 +4,11 @@ import './style.scss';
 import Clause from './components/Clause';
 import Dropdown from './components/Dropdown';
 
+export const portalContainer = document.getElementById('madlibs-portals');
+
 const App = () => {
   return (
-    <div id="madlibs">
+    <div id="madlibs-root">
       <Clause>
         Pull in
         <Dropdown
@@ -38,6 +40,7 @@ const App = () => {
             { label: 'to Google Sheets', value: 'googleSheets' },
           ]}
           classString="three"
+          alignRight
         />
         <Dropdown
           options={[
@@ -46,6 +49,7 @@ const App = () => {
             { label: 'every Monday', value: 'weekly' },
           ]}
           classString="four"
+          alignRight
         />
       </Clause>
     </div>
@@ -55,5 +59,5 @@ const App = () => {
 render(
   <App />,
   document.body,
-  document.querySelector('#madlibs')
+  document.querySelector('#madlibs-root')
 );
