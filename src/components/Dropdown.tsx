@@ -49,7 +49,7 @@ const Dropdown = ({ options, classString, alignRight }: DropdownProps) => {
       };
 
       if (alignRight) {
-        position.left = rect.left - rect.width;
+        position.left = rect.right - 188; // account for menu width, margins etc.
       } else {
         position.left = rect.left;
       }
@@ -60,8 +60,10 @@ const Dropdown = ({ options, classString, alignRight }: DropdownProps) => {
 
   useEffect(() => {
     document.addEventListener('click', onClickOutside);
+    document.addEventListener('resize', close);
     return () => {
       document.removeEventListener('click', onClickOutside);
+      document.removeEventListener('resize', close);
     };
   }, []);
 
