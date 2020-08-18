@@ -19,14 +19,15 @@ interface DropdownProps {
   options: Option[];
   classString: string;
   alignRight?: boolean;
+  selectedOption: Option;
+  setSelectedOption: (option: Option) => void;
 }
 
-const Dropdown = ({ options, classString, alignRight }: DropdownProps) => {
+const Dropdown = ({ options, classString, alignRight, selectedOption, setSelectedOption }: DropdownProps) => {
   const wrapperRef = useRef(null);
   const labelRef = useRef(null);
   const [position, setPosition] = useState({ top: 0 });
   const [isOpen, setIsOpen] = useState(false);
-  const [selectedOption, setSelectedOption] = useState(options[0]);
 
   const classes = ['clause-dropdown', classString];
 
