@@ -1,6 +1,7 @@
 import * as webpack from 'webpack';
 import { resolve, join } from 'path';
 import * as HtmlWebpackPlugin from 'html-webpack-plugin';
+import * as CopyPlugin from 'copy-webpack-plugin';
 
 const { HotModuleReplacementPlugin } = webpack;
 const port = 3000;
@@ -73,15 +74,21 @@ module.exports = (env: WebpackEnvironment, argv: { mode: string }) => {
         filename: 'index.html',
         inject: 'body'
       }),
-      new HotModuleReplacementPlugin()
+      new HotModuleReplacementPlugin(),
+      new CopyPlugin({
+        patterns: [
+          { from: './images', to: '../dist/images' },
+        ],
+      }),
     ]
   };
 
   if (argv.mode === 'development') {
     config.devServer = {
       contentBase: join(__dirname, 'dist'),
-        compress: true,
-        port: 9000
+      compress: true,
+      port: 9000,
+      writeToDisk: true,
     };
   }
 
