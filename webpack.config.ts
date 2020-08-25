@@ -2,6 +2,7 @@ import * as webpack from 'webpack';
 import { resolve, join } from 'path';
 import * as HtmlWebpackPlugin from 'html-webpack-plugin';
 import * as CopyPlugin from 'copy-webpack-plugin';
+import * as MiniCssExtractPlugin from 'mini-css-extract-plugin';
 
 const { HotModuleReplacementPlugin } = webpack;
 const port = 3000;
@@ -57,8 +58,12 @@ module.exports = (env: WebpackEnvironment, argv: { mode: string }) => {
         {
           test: /\.s[ac]ss$/i,
           use: [
-            // Creates `style` nodes from JS strings
-            'style-loader',
+            {
+              loader: MiniCssExtractPlugin.loader,
+              options: {
+                publicPath: 'dist',
+              },
+            },
             // Translates CSS into CommonJS
             'css-loader',
             // Compiles Sass to CSS
@@ -74,6 +79,7 @@ module.exports = (env: WebpackEnvironment, argv: { mode: string }) => {
         filename: 'index.html',
         inject: 'body'
       }),
+      new MiniCssExtractPlugin(),
       new HotModuleReplacementPlugin(),
       new CopyPlugin({
         patterns: [
