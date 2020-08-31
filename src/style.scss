@@ -40,10 +40,30 @@
 .madlibs-illustration {
   margin-top: 20px;
   display: flex;
+}
 
-  img {
-    width: 33.333%;
+.madlibs-illustration-part {
+  background-size: contain;
+  position: relative;
+  width: 33.333%;
+
+  &.pull { background-image: url('./images/pull-bg.png'); }
+  &.push { background-image: url('./images/push-bg.png'); }
+
+  > img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+
+    opacity: 0;
+    transition: opacity 0.25s linear;
   }
+
+  &.image-0 > img:nth-child(1) { opacity: 1; }
+  &.image-1 > img:nth-child(2) { opacity: 1; }
+  &.image-2 > img:nth-child(3) { opacity: 1; }
 }
 
 .clause-container {

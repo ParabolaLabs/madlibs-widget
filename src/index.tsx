@@ -61,9 +61,13 @@ const App = () => {
         </Clause>
       </div>
       <div class="madlibs-illustration">
-        <img src={`./images/${pullOption.value}.png`} />
-        <img src="./images/middle.png" />
-        <img src={`./images/${pushOption.value}.png`} />
+        <div class={`madlibs-illustration-part pull image-${PULL_OPTIONS.indexOf(pullOption)}`}>
+          {PULL_OPTIONS.map((option) => <img class={option.value} src={`./images/${option.value}.png`} />)}
+        </div>
+        <img class="madlibs-illustration-part middle" src="./images/middle.png" />
+        <div class={`madlibs-illustration-part push image-${PUSH_OPTIONS.indexOf(pushOption)}`}>
+          {PUSH_OPTIONS.map((option) => <img class={option.value} src={`./images/${option.value}.png`} />)}
+        </div>
       </div>
     </div>
   );

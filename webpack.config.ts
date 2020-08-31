@@ -65,7 +65,12 @@ module.exports = (env: WebpackEnvironment, argv: { mode: string }) => {
               },
             },
             // Translates CSS into CommonJS
-            'css-loader',
+            {
+              loader: 'css-loader',
+              options: {
+                url: false
+              },
+            },
             // Compiles Sass to CSS
             'sass-loader',
           ],
