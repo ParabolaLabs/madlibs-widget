@@ -134,7 +134,7 @@
 
   position: relative;
   display: inline;
-  padding: 1.5px 11px 1.5px 0;
+  padding: 1.5px 5px 1.5px 0;
   margin: 0 6px;
 
   border-radius: 2px;
@@ -152,18 +152,21 @@
     content: '';
     position: absolute;
     bottom: 7px;
-    right: 0;
+    right: -1px;
+
     border-bottom: 2px solid white;
     border-right: 2px solid white;
     border-radius: 1px;
+    transition-property: transform;
+    transition-duration: 0.1s;
+
     transform: rotate(45deg);
     height: 4px;
     width: 4px;
   }
 
   .clause-dropdown.open &:after {
-    bottom: 5px;
-    transform: rotate(-135deg);
+    transform: rotate(-135deg) translateY(-1px) translateX(-2px);
   }
 }
 
@@ -198,38 +201,32 @@
   }
 }
 
-.clause-entry.one {
-  background-color: #1d93ba;
-  box-shadow: 6px 0 0 #1d93ba, -6px 0 0 #1d93ba;
-}
-.clause-menu.one {
-  background-color: #1d93ba;
+$bg-one: #1d93ba;
+$bg-two: #46b4bf;
+$bg-three: #42b2fd;
+$bg-four: #0082da;
+
+@mixin clause-colors($name, $color) {
+  $hover-color: darken($color, 5%);
+
+  .clause-entry.#{$name} {
+    background-color: $color;
+    box-shadow: 6px 0 0 $color, -6px 0 0 $color;
+
+    &:hover {
+      background-color: $hover-color;
+      box-shadow: 6px 0 0 $hover-color, -6px 0 0 $hover-color;
+    }
+  }
+  .clause-menu.#{$name} {
+    background-color: $color;
+  }
 }
 
-.clause-entry.two {
-  background-color: #46b4bf;
-  box-shadow: 6px 0 0 #46b4bf, -6px 0 0 #46b4bf;
-}
-.clause-menu.two {
-  background-color: #46b4bf;
-}
-
-.clause-entry.three {
-  background-color: #42b2fd;
-  box-shadow: 6px 0 0 #42b2fd, -6px 0 0 #42b2fd;
-}
-.clause-menu.three {
-  background-color: #42b2fd;
-}
-
-.clause-entry.four {
-  background-color: #0082da;
-  box-shadow: 6px 0 0 #0082da, -6px 0 0 #0082da;
-}
-.clause-menu.four {
-  background-color: #0082da;
-}
-
+@include clause-colors(one, $bg-one);
+@include clause-colors(two, $bg-two);
+@include clause-colors(three, $bg-three);
+@include clause-colors(four, $bg-four);
 
 @media (min-width: 768px) {
   .clause {

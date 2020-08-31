@@ -18,7 +18,7 @@ const adoptOrphans = (text: string) => {
     } else if (i !== words.length - 1) {
       return `${newString}${word} `;
     } else {
-      return `${newString}${word}`;
+      return `${newString}${word}${NBSP}`;
     }
   }, '');
 };
