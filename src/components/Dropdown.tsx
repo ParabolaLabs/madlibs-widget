@@ -30,6 +30,7 @@ const Dropdown = ({ options, classString, alignRight, selectedOption, setSelecte
   const [isOpen, setIsOpen] = useState(false);
 
   const classes = ['clause-dropdown', classString];
+  if (isOpen) classes.push('open');
 
   const toggle = () => setIsOpen(!isOpen);
   const close = () => setIsOpen(false);
