@@ -38,9 +38,11 @@
 }
 
 .madlibs-illustration {
+  margin-top: 20px;
+  display: flex;
 
   img {
-    display: inline-block;
+    width: 33.333%;
   }
 }
 
@@ -198,7 +200,7 @@
 }
 
 @media (max-width: 767px) {
-  #madlibs-root {
+  .clause-container {
     flex-direction: column;
     align-items: center;
   }
