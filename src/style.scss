@@ -132,8 +132,9 @@
   -webkit-appearance: none;
   cursor: pointer;
 
+  position: relative;
   display: inline;
-  padding: 1.5px 0;
+  padding: 1.5px 11px 1.5px 0;
   margin: 0 6px;
 
   border-radius: 2px;
@@ -149,20 +150,19 @@
 
   &:after {
     content: '';
-    position: relative;
-    top: -2px;
-    display: inline-block;
+    position: absolute;
+    bottom: 7px;
+    right: 0;
     border-bottom: 2px solid white;
     border-right: 2px solid white;
     border-radius: 1px;
-    margin-left: 5px;
     transform: rotate(45deg);
     height: 4px;
     width: 4px;
   }
 
   .clause-dropdown.open &:after {
-    top: 0;
+    bottom: 5px;
     transform: rotate(-135deg);
   }
 }
