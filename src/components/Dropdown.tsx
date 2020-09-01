@@ -47,7 +47,7 @@ const Dropdown = ({ options, classString, alignRight, selectedOption, setSelecte
       const rect = el.getBoundingClientRect();
 
       const position: Position = {
-        top: rect.top + rect.height, // account for webflow positioning
+        top: window.scrollY + rect.top + rect.height, // account for webflow positioning
       };
 
       if (alignRight) {
