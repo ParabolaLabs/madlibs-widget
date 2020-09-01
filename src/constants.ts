@@ -1,5 +1,5 @@
 export const PULL_OPTIONS = [
-  { label: 'yesterday’s shopify orders', value: 'shopify-import' },
+  { label: 'yesterday’s Shopify orders', value: 'shopify-import' },
   { label: 'last week‘s returns', value: 'returns' },
   { label: 'June‘s ad spend', value: 'adspend' },
 ];
