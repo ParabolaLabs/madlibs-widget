@@ -1,56 +1,31 @@
 <!DOCTYPE html>
-<html>
-  <body>
-    <link rel="stylesheet" href="../dist/style.css" />
-    <div id="madlibs">
-      <div data-component="clause" id="madlibs-clause-import" class="clause green">
-        <div class="clause-inner">
-          <span class="prefix">Pull in</span>
-          <span class="clause-dropdown one" id="import-dropdown" data-component="select" data-onchange="onImportChange">
-            <select class="clause-entry">
-              <option value="shopify">yesterday&rsquo;s Shopify orders</option>
-              <option value="returns">last week&rsquo;s returns</option>
-              <option value="adSpend">June&rsquo;s ad spend</option>
-            </select>
-            <a hidden class="clause-entry"></a>
-          </span>
-        </div>
+<html lang="en"><head>
+  <meta charset="UTF-8">
+</head>
+<body>
+  <link rel="stylesheet" href="dist/app.css" />
+  <div id="madlibs">
+    <div id="madlibs-root">
+      <div id="" class="clause-container">
+        <div class="clause"><div class="clause-inner">Pull in<span class="clause-dropdown one"> <a class="clause-entry one">yesterday’s shopify&nbsp;orders</a> </span></div></div>
+        <div class="clause guarantee-width"><div class="clause-inner">Show me all the orders that<br><span class="clause-dropdown two"> <a class="clause-entry two">have</a> </span>been&nbsp;fulfilled</div></div>
+        <div class="clause"><div class="clause-inner">Send data<span class="clause-dropdown three"> <a class="clause-entry three">as an&nbsp;email</a> </span><span class="clause-dropdown four"> <a class="clause-entry four">once&nbsp;per&nbsp;day</a> </span></div></div>
       </div>
-      <div data-component="clause" id="madlibs-clause-process" class="clause guarantee-width orange">
-        <div class="clause-inner">
-          <span class="prefix">Show me all the orders that<br></span>
-          <span class="clause-dropdown two" id="process-dropdown" data-component="select">
-            <select class="clause-entry">
-              <option value="have">have</option>
-              <option value="haveNot">have not</option>
-            </select>
-            <a hidden class="clause-entry"></a>
-          </span>
-          <span class="suffix">been&nbsp;fulfilled</span>
+      <div id="" class="madlibs-illustration">
+        <div class="madlibs-illustration-part pull image-0">
+          <img class="shopify-import" src="./images/shopify-import.jpeg">
+          <img class="returns" src="./images/returns.jpeg">
+          <img class="adspend" src="./images/adspend.jpeg">
         </div>
-      </div>
-      <div data-component="clause" id="madlibs-clause-export" class="clause teal">
-        <div class="clause-inner">
-          <span class="prefix">Send data</span>
-          <span class="clause-dropdown three" id="export-dropdown" data-component="select" data-align="right">
-            <select class="clause-entry">
-              <option value="email">as an email</option>
-              <option value="shopify">to Shopify</option>
-              <option value="googleSheets">to Google Sheets</option>
-            </select>
-            <a hidden class="clause-entry"></a>
-          </span>
-          <span class="clause-dropdown four" id="schedule-dropdown" data-component="select" data-align="right">
-            <select class="clause-entry">
-              <option value="daily">once&nbsp;per day</option>
-              <option value="horuly">every hour</option>
-              <option value="weekly">every Monday</option>
-            </select>
-            <a hidden class="clause-entry"></a>
-          </span>
+        <img class="madlibs-illustration-part middle" src="./images/middle.jpeg">
+        <div class="madlibs-illustration-part push image-0">
+          <img class="email" src="./images/email.jpeg">
+          <img class="shopify-export" src="./images/shopify-export.jpeg">
+          <img class="google-sheets" src="./images/google-sheets.jpeg">
         </div>
       </div>
     </div>
-    <script type="text/javascript" src="../dist/index-min.js"></script>
-  </body>
+    <div id="madlibs-portals"></div>
+  </div>
+</body>
 </html>
