@@ -305,13 +305,13 @@ $bg-four: #0082da;
   }
 }
 
-.ios, .ios-webview {
+.ios, .ios-webview, .crios {
   .clause-entry:after {
     bottom: 9px;
   }
 }
 
-.safari, .ios, .ios-webview {
+.safari, .ios, .ios-webview, .crios {
   .madlibs-illustration {
     align-items: flex-start;
   }
