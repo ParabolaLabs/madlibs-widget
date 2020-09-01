@@ -10,7 +10,10 @@ import {
   FILTER_OPTIONS,
   PUSH_OPTIONS,
   SCHEDULE_OPTIONS,
+  WIDGET_URL,
 } from './constants';
+
+const imageUrl = (path: string) => WIDGET_URL + path + '.jpeg';
 
 export const portalContainer = document.getElementById('madlibs-portals');
 
@@ -62,11 +65,11 @@ const App = () => {
       </div>
       <div class="madlibs-illustration">
         <div class={`madlibs-illustration-part pull image-${PULL_OPTIONS.indexOf(pullOption)}`}>
-          {PULL_OPTIONS.map((option) => <img class={option.value} src={`./images/${option.value}.jpeg`} />)}
+          {PULL_OPTIONS.map((option) => <img class={option.value} src={imageUrl(option.value)} />)}
         </div>
-        <img class="madlibs-illustration-part middle" src="./images/middle.jpeg" />
+        <img class="madlibs-illustration-part middle" src={imageUrl('middle')} />
         <div class={`madlibs-illustration-part push image-${PUSH_OPTIONS.indexOf(pushOption)}`}>
-          {PUSH_OPTIONS.map((option) => <img class={option.value} src={`./images/${option.value}.jpeg`} />)}
+          {PUSH_OPTIONS.map((option) => <img class={option.value} src={imageUrl(option.value)} />)}
         </div>
       </div>
     </div>

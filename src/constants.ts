@@ -20,3 +20,5 @@ export const SCHEDULE_OPTIONS = [
   { label: 'every hour', value: 'hourly' },
   { label: 'every Monday', value: 'weekly' },
 ];
+
+export const WIDGET_URL = 'https://parabola-public.s3-us-west-2.amazonaws.com/widget/';

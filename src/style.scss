@@ -1,3 +1,4 @@
+$widget_url: "https://parabola-public.s3-us-west-2.amazonaws.com/widget/";
 
 @keyframes pop-in {
   0% {
@@ -47,8 +48,8 @@
   position: relative;
   width: 33.333%;
 
-  &.pull { background-image: url('./images/pull-bg.jpeg'); }
-  &.push { background-image: url('./images/push-bg.jpeg'); }
+  &.pull { background-image: url('#{widget_url}pull-bg.jpeg'); }
+  &.push { background-image: url('#{widget_url}push-bg.jpeg'); }
 
   > img {
     position: absolute;
@@ -138,7 +139,7 @@
   margin: 0 6px;
 
   border-radius: 2px;
-  color: white;
+  color: white !important; // account for webflow css
   font-family: "inter", "helvetica", sans-serif;
   font-size: 100%;
   line-height: 1.5;
