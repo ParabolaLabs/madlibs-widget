@@ -5,6 +5,9 @@ import './style.scss';
 import Clause from './components/Clause';
 import Dropdown from './components/Dropdown';
 
+import { detect } from 'detect-browser';
+const browser = detect();
+
 import {
   PULL_OPTIONS,
   FILTER_OPTIONS,
@@ -16,6 +19,7 @@ import {
 const imageUrl = (path: string) => WIDGET_URL + path + '.jpeg';
 
 export const portalContainer = document.getElementById('madlibs-portals');
+portalContainer.classList.add(browser.name);
 
 const App = () => {
   const [pullOption, setPullOption] = useState(PULL_OPTIONS[0]);
@@ -24,7 +28,7 @@ const App = () => {
   const [scheduleOption, setScheduleOption] = useState(SCHEDULE_OPTIONS[0]);
 
   return (
-    <div id="madlibs-root">
+    <div id="madlibs-root" class={browser.name}>
       <div class="clause-container">
         <Clause>
           Pull in

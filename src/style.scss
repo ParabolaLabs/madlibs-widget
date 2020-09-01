@@ -41,18 +41,20 @@ $widget_url: "https://parabola-public.s3-us-west-2.amazonaws.com/widget/";
 .madlibs-illustration {
   margin-top: 20px;
   display: flex;
-  align-items: flex-start;
+  align-items: stretch;
   align-content: flex-start;
 }
 
 .madlibs-illustration-part {
   background-size: contain;
+  background-position: top center;
+  background-repeat: no-repeat;
   position: relative;
   width: 33.333%;
   height: auto;
 
-  &.pull { background-image: url('#{widget_url}pull-bg.jpeg'); }
-  &.push { background-image: url('#{widget_url}push-bg.jpeg'); }
+  &.pull { background-image: url('#{$widget_url}pull-bg.jpeg'); }
+  &.push { background-image: url('#{$widget_url}push-bg.jpeg'); }
 
   > img {
     position: absolute;
@@ -287,5 +289,35 @@ $bg-four: #0082da;
     right: auto !important;
     margin-left: 0;
     width: 250px;
+  }
+}
+
+// Browser hacks
+
+.chrome {
+  .clause-menu {
+    margin-top: 95px;
+  }
+}
+
+.firefox {
+  .clause-entry {
+    padding: 1.5px 0;
+
+    &:after {
+      display: none;
+    }
+  }
+}
+
+.ios {
+  .clause-entry:after {
+    bottom: 9px;
+  }
+}
+
+.safari, .ios {
+  .madlibs-illustration {
+    align-items: flex-start;
   }
 }
