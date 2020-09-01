@@ -41,12 +41,15 @@ $widget_url: "https://parabola-public.s3-us-west-2.amazonaws.com/widget/";
 .madlibs-illustration {
   margin-top: 20px;
   display: flex;
+  align-items: flex-start;
+  align-content: flex-start;
 }
 
 .madlibs-illustration-part {
   background-size: contain;
   position: relative;
   width: 33.333%;
+  height: auto;
 
   &.pull { background-image: url('#{widget_url}pull-bg.jpeg'); }
   &.push { background-image: url('#{widget_url}push-bg.jpeg'); }
