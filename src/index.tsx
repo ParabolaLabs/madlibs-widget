@@ -62,11 +62,11 @@ const App = () => {
       </div>
       <div class="madlibs-illustration">
         <div class={`madlibs-illustration-part pull image-${PULL_OPTIONS.indexOf(pullOption)}`}>
-          {PULL_OPTIONS.map((option) => <img class={option.value} src={`./images/${option.value}.png`} />)}
+          {PULL_OPTIONS.map((option) => <img class={option.value} src={`./images/${option.value}.jpeg`} />)}
         </div>
-        <img class="madlibs-illustration-part middle" src="./images/middle.png" />
+        <img class="madlibs-illustration-part middle" src="./images/middle.jpeg" />
         <div class={`madlibs-illustration-part push image-${PUSH_OPTIONS.indexOf(pushOption)}`}>
-          {PUSH_OPTIONS.map((option) => <img class={option.value} src={`./images/${option.value}.png`} />)}
+          {PUSH_OPTIONS.map((option) => <img class={option.value} src={`./images/${option.value}.jpeg`} />)}
         </div>
       </div>
     </div>
