@@ -40,9 +40,6 @@ $widget_url: "https://parabola-public.s3-us-west-2.amazonaws.com/widget/";
 
 .madlibs-illustration {
   margin-top: 20px;
-  display: flex;
-  align-items: stretch;
-  align-content: flex-start;
 }
 
 .madlibs-illustration-part {
@@ -51,7 +48,7 @@ $widget_url: "https://parabola-public.s3-us-west-2.amazonaws.com/widget/";
   background-repeat: no-repeat;
   position: relative;
   width: 33.333%;
-  height: auto;
+  display: inline-block;
 
   &.pull { background-image: url('#{$widget_url}pull-bg.jpeg'); }
   &.push { background-image: url('#{$widget_url}push-bg.jpeg'); }
@@ -67,9 +64,12 @@ $widget_url: "https://parabola-public.s3-us-west-2.amazonaws.com/widget/";
     transition: opacity 0.25s linear;
   }
 
-  &.image-0 > img:nth-child(1) { opacity: 1; }
-  &.image-1 > img:nth-child(2) { opacity: 1; }
-  &.image-2 > img:nth-child(3) { opacity: 1; }
+  &.image-0 > img:nth-child(1),
+  &.image-1 > img:nth-child(2),
+  &.image-2 > img:nth-child(3) {
+    opacity: 1;
+    position: static;
+  }
 }
 
 .clause-container {
@@ -296,6 +296,7 @@ $bg-four: #0082da;
 // Browser hacks
 
 .firefox {
+  // Carets are problematic, let's just remove 'em
   .clause-entry {
     padding: 1.5px 0;
 
@@ -308,11 +309,5 @@ $bg-four: #0082da;
 .ios, .ios-webview, .crios {
   .clause-entry:after {
     bottom: 9px;
-  }
-}
-
-.safari, .ios, .ios-webview, .crios {
-  .madlibs-illustration {
-    align-items: flex-start;
   }
 }
